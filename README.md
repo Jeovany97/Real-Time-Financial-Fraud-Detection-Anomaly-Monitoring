@@ -33,14 +33,14 @@ Score a single transaction: `POST /score` with `Time`, `Amount`, `V1..V28` (opti
   Headline metric is PR-AUC, not accuracy/ROC-AUC.
 - **Operating point as a business constraint.** Each model's threshold is chosen on *validation* to maximise recall under a
   false-positive-rate budget (default 0.1%), then applied untouched to the test set.
-- **Explainability.** SHAP TreeExplainer: global summary plot plus top-5 per-alert contributions returned by the API and
+- **Explainability.** SHAP TreeExplainer: global summary plot plus top 5 per alert contributions returned by the API and
   shown in the dashboard's investigation tab.
 - **Monitoring.** Alert rate, latency, running precision/recall (when labels arrive), and score drift via PSI vs. validation.
 
 ## Limitations (state these honestly)
-- The dataset has no account/card ID, so behavioural features are global-stream features, not per-customer profiles.
-- V1–V28 are PCA-anonymised, so SHAP names components rather than human-readable reasons.
-- Only ~2 days of data and ~490 frauds total, so test-set metrics are noisy (report counts alongside rates).
+- The dataset has no account/card ID, so behavioural features are global stream features, not per customer profiles.
+- V1–V28 are PCA anonymised, so SHAP names components rather than human readable reasons.
+- Only ~2 days of data and ~490 frauds total, so test set metrics are noisy (report counts alongside rates).
 - Simulator is a replay, not true production traffic.
 
 ## Results (real data, chronological test set: 56,962 txns, 75 frauds)
