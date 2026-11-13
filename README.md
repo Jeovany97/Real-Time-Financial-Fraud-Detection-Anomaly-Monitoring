@@ -1,4 +1,4 @@
-# Real-Time Financial Fraud Detection & Anomaly Monitoring
+# Real Time Financial Fraud Detection & Anomaly Monitoring
 
 Python · scikit-learn · XGBoost · SHAP · FastAPI · Streamlit
 
@@ -25,7 +25,7 @@ streamlit run dashboard/app.py                                    # terminal 4
 Score a single transaction: `POST /score` with `Time`, `Amount`, `V1..V28` (optional `transaction_id`, `true_label`).
 
 ## Design decisions (good interview material)
-- **Time-based split, no leakage.** Rows are sorted by `Time`; train = first 60%, validation = next 20%, test = final 20%.
+- **Time based split, no leakage.** Rows are sorted by `Time`; train = first 60%, validation = next 20%, test = final 20%.
   Behavioural features (txn velocity over 60s/600s, time since previous txn, amount z-score vs. *past* amounts) are
   computed by one streaming class that updates its state *after* emitting features. The same class powers training and
   the API, so there is no train/serve skew. The API starts from the featurizer state at the val/test boundary.
